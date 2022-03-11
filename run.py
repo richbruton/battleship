@@ -7,10 +7,18 @@
 
 # display board
 
+# create player and computer boats
 # store player + computer boats
 
+# player input
 # verify player choice is on board(is an int and within 0, size -1) and not previously chosen
-# return hit or miss, store choices
+# return hit or miss, store choices in array
+
+# computer guess from coordinates in board not already chosen from random int function
+# store computers choices in array
+# return hit or miss
+
+# display hits and misses on each board
 
 # round counter
 
