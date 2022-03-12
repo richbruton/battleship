@@ -17,7 +17,7 @@ def board_size():
     print("Board will be a square, so entering '5' will make a 5x5 board\n")
     print("Use a board size from 4 to 10\n")
     size_str = input("Enter your board size here: \n")
-
+    print(f'You have chose a {size_str} x {size_str} board')
     return size_str
 
 
@@ -25,7 +25,7 @@ def board_size():
 pboard = []
 cboard = []
 size = int(board_size())
-print(size)
+
 
 
 for i in range(size):
