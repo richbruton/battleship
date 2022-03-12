@@ -14,9 +14,11 @@ for i in range(size):
     pboard.append(["."] * size )
     cboard.append(["."] * size )
     
-print(pboard)
-print(cboard)
+def show_pboard(pboard):
+    for row in pboard:
+        print((" ").join(row))
 
+show_pboard(pboard)
 
 # display board
 
