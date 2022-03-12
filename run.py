@@ -5,14 +5,29 @@
 
 # build board
 
-size = 4
+
+
+def board_size():
+    print("Board size selection\n")
+    print("Board will be a square, so entering '5' will make a 5x5 board\n")
+    print("Use a board size from 4 to 10\n")
+    size_str = input("Enter your board size here: \n")
+
+    return size_str
+
+
+
 pboard = []
 cboard = []
+size = int(board_size())
+print(size)
 
 
 for i in range(size):
     pboard.append(["."] * size )
     cboard.append(["."] * size )
+
+# display board(computer board to be added)
     
 def show_pboard(pboard):
     for row in pboard:
@@ -20,7 +35,6 @@ def show_pboard(pboard):
 
 show_pboard(pboard)
 
-# display board
 
 # create player and computer boats
 # store player + computer boats
