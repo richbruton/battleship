@@ -3,13 +3,13 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 
-# build board
-
+pboard = []
+cboard = []
 
 
 def board_size():
     """
-    Function to allow the player to define board size
+    allow the player to define board size
     This will also eventually decide the number of boats
     Validation to be add for max and min board size
     """
@@ -17,22 +17,15 @@ def board_size():
     print("Board will be a square, so entering '5' will make a 5x5 board\n")
     print("Use a board size from 4 to 10\n")
     size_str = input("Enter your board size here: \n")
-    print(f'You have chose a {size_str} x {size_str} board')
+    print(f'You have chosen a {size_str} x {size_str} board')
     return size_str
 
-
-
-pboard = []
-cboard = []
 size = int(board_size())
-
-
 
 for i in range(size):
     pboard.append(["."] * size )
     cboard.append(["."] * size )
 
-# display board(computer board to be added)
     
 def show_board(data):
     """
@@ -41,9 +34,12 @@ def show_board(data):
     for row in data:
         print((" ").join(row))
 
-show_board(pboard)
+def board_divider():
+    """
+    Board divider to show where one board ends and the other begins
+    """
+        print(("- ")*size)
 
-show_board(cboard)
 
 # create player and computer boats
 # store player + computer boats
@@ -62,3 +58,10 @@ show_board(cboard)
 
 # game winner
 
+def main():
+    show_board(pboard)
+    board_divider()
+    show_board(cboard)
+
+
+main()
