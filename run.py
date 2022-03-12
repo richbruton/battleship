@@ -5,6 +5,19 @@
 
 # build board
 
+size = 4
+pboard = []
+cboard = []
+
+
+for i in range(size):
+    pboard.append(["."] * size )
+    cboard.append(["."] * size )
+    
+print(pboard)
+print(cboard)
+
+
 # display board
 
 # create player and computer boats
