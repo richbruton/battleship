@@ -72,17 +72,15 @@ def create_p_boats():
     create player boats and show them on the players board
     """
 
-    for i in range(num_boats):
-        while len(pboats) < num_boats:
-            row = randint(0, (size - 1))
-            col = randint(0, (size - 1))
-            pboard[row][col] = "@"
-            if [row, col] in pboats:
-                continue
-                # num_boats += 1
-            else:
-                pboats.append([row, col])
-        
+    while len(pboats) < num_boats:
+        row = randint(0, (size - 1))
+        col = randint(0, (size - 1))
+        pboard[row][col] = "@"
+        if [row, col] in pboats:
+            continue
+        else:
+            pboats.append([row, col])
+
     print(pboard)
     print(len(pboats))
     print(pboats)
