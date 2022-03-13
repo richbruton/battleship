@@ -1,5 +1,9 @@
+from random import randint
+
 pboard = []
 cboard = []
+pboats = []
+cboats = []
 
 
 def board_size():
@@ -36,11 +40,12 @@ def validate_board_size(data):
     except ValueError as e:
         print(f"Invalid data: {e}. Please choose a number from 4 to 10:\n")
         return False
-   
+
     return True
 
 
 size = int(board_size())
+num_boats = int(size*size / 4)
 
 for i in range(size):
     pboard.append(["."] * size)
@@ -61,15 +66,30 @@ def board_divider():
     """
     print(("- ")*size)
 
+def create_p_boats():
+    """
+    create player boats and show them on the players board
+    """
+
+    for i in range(num_boats + 1):
+        row = randint(0, (size - 1))
+        col = randint(0, (size - 1))
+
+        # add boat coords to list here
+        pboard[row][col]= "@"
+        print(pboats)
+
 
 # create player and computer boats
 # store player + computer boats
 
 # player input
-# verify player choice is on board(is an int and within 0, size -1) and not previously chosen
+# verify player choice is on board(is an int and within 0, size -1)
+# and not previously chosen
 # return hit or miss, store choices in array
 
-# computer guess from coordinates in board not already chosen from random int function
+# computer guess from coordinates in board not already chosen from
+#  random int function
 # store computers choices in array
 # return hit or miss
 
@@ -80,6 +100,7 @@ def board_divider():
 # game winner
 
 def main():
+    create_p_boats()
     show_board(pboard)
     board_divider()
     show_board(cboard)
