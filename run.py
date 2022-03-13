@@ -64,20 +64,22 @@ def board_divider():
     """
     Board divider to show where one board ends and the other begins
     """
-    print(("- ")*size)
+    print(("==")*size)
+
 
 def create_p_boats():
     """
     create player boats and show them on the players board
     """
 
-    for i in range(num_boats + 1):
+    for i in range(num_boats):
         row = randint(0, (size - 1))
         col = randint(0, (size - 1))
-
+        pboard[row][col] = "@"
+        pboats.append([row, col])
         # add boat coords to list here
-        pboard[row][col]= "@"
-        print(pboats)
+    print(pboard)
+    print(pboats)
 
 
 # create player and computer boats
