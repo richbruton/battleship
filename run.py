@@ -1,8 +1,3 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
-
 pboard = []
 cboard = []
 
@@ -15,7 +10,7 @@ def board_size():
     """
     while True:
         print("Board size selection\n")
-        print("Board will be a square, so entering '5' will make a 5x5 board\n")
+        print("Board is a square, so entering '5' will make a 5x5 board\n")
         print("Use a board size from 4 to 10\n")
 
         size_str = input("Enter your board size here: \n")
@@ -36,20 +31,21 @@ def validate_board_size(data):
     try:
         if int(data) < 4 or int(data) > 10:
             raise ValueError(
-                f"Please choose a number from 4 to 10, you chose: {data}"
+                f"You chose: {data}"
             )
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+        print(f"Invalid data: {e}. Please choose a number from 4 to 10:\n")
         return False
-    
+   
     return True
 
 
 size = int(board_size())
 
 for i in range(size):
-    pboard.append(["."] * size )
-    cboard.append(["."] * size )
+    pboard.append(["."] * size)
+    cboard.append(["."] * size)
+
 
 def show_board(data):
     """
@@ -57,6 +53,7 @@ def show_board(data):
     """
     for row in data:
         print((" ").join(row))
+
 
 def board_divider():
     """
@@ -83,9 +80,6 @@ def board_divider():
 # game winner
 
 def main():
-    # size = int(board_size())
-
-    # validate_board_size(size)
     show_board(pboard)
     board_divider()
     show_board(cboard)
