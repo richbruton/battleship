@@ -18,7 +18,7 @@ def board_size():
         print("Use a board size from 4 to 10\n")
 
         size_str = input("Enter your board size here: \n")
-
+                
         if validate_board_size(size_str):
             print(f'You have chosen a {size_str} x {size_str} board')
             break
@@ -85,10 +85,7 @@ def create_p_boats():
         else:
             pboats.append([row, col])
 
-    print(pboard)
-    print(len(pboats))
-    print(pboats)
-
+    
 def create_c_boats():
     """
     create computer boats and store in a list
@@ -122,6 +119,7 @@ def create_c_boats():
 
 def main():
     create_p_boats()
+    create_c_boats()
     show_board(pboard)
     board_divider()
     show_board(cboard)
