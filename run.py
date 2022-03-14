@@ -18,7 +18,7 @@ def board_size():
         print("Use a board size from 4 to 10\n")
 
         size_str = input("Enter your board size here: \n")
-                
+
         if validate_board_size(size_str):
             print(f'You have chosen a {size_str} x {size_str} board')
             break
@@ -85,12 +85,12 @@ def create_p_boats():
         else:
             pboats.append([row, col])
 
-    
+
 def create_c_boats():
     """
     create computer boats and store in a list
     """
-    
+
     while len(cboats) < num_boats:
         row = randint(0, (size - 1))
         col = randint(0, (size - 1))
@@ -100,6 +100,20 @@ def create_c_boats():
             cboats.append([row, col])
 
 
+def player_choice():
+    """
+    Input for player choice
+    Verify choice is on board
+    Convert . to x if a miss, . to s for a hit
+    """
+    row = int(input("Guess your row here: \n"))
+    col = int(input("Guess your column here: \n"))
+
+    if (row < 0 or row > (size - 1)) or (col < 0 or col > (size - 1)):
+        raise ValueError(
+            print(f'Coordinates must be between 0 and {size - 1}')
+        )
+    
 
 # player input
 # verify player choice is on board(is an int and within 0, size -1)
@@ -117,12 +131,14 @@ def create_c_boats():
 
 # game winner
 
+
 def main():
     create_p_boats()
     create_c_boats()
     show_board(pboard)
     board_divider()
     show_board(cboard)
+    player_choice()
 
 
 main()
