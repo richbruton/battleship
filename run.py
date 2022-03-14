@@ -69,7 +69,7 @@ def board_divider():
 
 def create_p_boats():
     """
-    create player boats and show them on the players board
+    create player boats, store in a list and show them on the players board
     """
 
     while len(pboats) < num_boats:
@@ -85,9 +85,20 @@ def create_p_boats():
     print(len(pboats))
     print(pboats)
 
+def create_c_boats():
+    """
+    create computer boats and store in a list
+    """
+    
+    while len(cboats) < num_boats:
+        row = randint(0, (size - 1))
+        col = randint(0, (size - 1))
+        if [row, col] in cboats:
+            continue
+        else:
+            cboats.append([row, col])
 
-# create player and computer boats
-# store player + computer boats
+
 
 # player input
 # verify player choice is on board(is an int and within 0, size -1)
