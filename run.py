@@ -33,7 +33,11 @@ def validate_board_size(data):
     """
 
     try:
-        if int(data) < 4 or int(data) > 10:
+        if not data.isdigit():
+            raise ValueError(
+                f"You chose: {data}"
+            )
+        elif int(data) < 4 or int(data) > 10:
             raise ValueError(
                 f"You chose: {data}"
             )
