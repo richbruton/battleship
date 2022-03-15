@@ -110,13 +110,13 @@ def player_choice():
     col = int(input("Guess your column here: \n"))
 
     if cboard[row][col] == "." and [row, col] in cboats:
-        print("hit")
+        print("player hit")
         cboard[row][col] = "o"
     elif cboard[row][col] == "." and [row, col] not in cboats:
-        print("miss")
+        print("player miss")
         cboard[row][col] = "x"
     elif cboard[row][col] == "o" or [row, col] == "x":
-        print("you tried there already")
+        print("player, you tried there already")
 
 
 def computer_choice():
@@ -129,13 +129,13 @@ def computer_choice():
     col = randint(0, (size - 1))
 
     if pboard[row][col] == "." and [row, col] in pboats:
-        print("hit")
+        print("computer hit")
         pboard[row][col] = "o"
     elif pboard[row][col] == "." and [row, col] not in pboats:
-        print("miss")
+        print("computer miss")
         pboard[row][col] = "x"
     elif pboard[row][col] == "o" or [row, col] == "x":
-        print("you tried there already")
+        print("computer, you tried there already")
 
 # player input
 # verify player choice is on board(is an int and within 0, size -1)
@@ -162,9 +162,9 @@ def main():
     show_board(cboard)
     player_choice()
     computer_choice()
-    show_board(cboard)
-    board_divider()
     show_board(pboard)
+    board_divider()
+    show_board(cboard)
 
 
 main()
