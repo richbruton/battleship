@@ -5,7 +5,7 @@ cboard = []
 pboats = []
 cboats = []
 choices = []
-
+turn = 0
 
 def board_size():
     """
@@ -126,17 +126,21 @@ def computer_choice():
     Verify choice is on board
     Convert . to x if a miss, . to s for a hit
     """
+    
     row = randint(0, (size - 1))
     col = randint(0, (size - 1))
+    if [row, col] not in choices:
+        if pboard[row][col] == "@" and [row, col] in pboats:
+            print("computer hit")
+            pboard[row][col] = "o"
+            choices.append([row, col])
+        elif pboard[row][col] == "." and [row, col] not in pboats:
+            print("computer miss")
+            pboard[row][col] = "x"
+            choices.append([row, col])
+    else:
+        computer_choice()
 
-    if pboard[row][col] == "." and [row, col] in pboats:
-        print("computer hit")
-        pboard[row][col] = "o"
-    elif pboard[row][col] == "." and [row, col] not in pboats:
-        print("computer miss")
-        pboard[row][col] = "x"
-    elif pboard[row][col] == "o" or [row, col] == "x":
-        print("computer, you tried there already")
 
 
 def game():
@@ -146,7 +150,7 @@ def game():
     the score after each round
     """
     turn = 0
-    
+
     while turn <= 9:
         player_choice()
         computer_choice()
@@ -154,11 +158,16 @@ def game():
         board_divider()
         show_board(cboard)
         turn += 1
+        if turn == 9:
+            end_game()
 
-# player input
+def end_game():
+    print("end game")
+
+
 # verify player choice is on board(is an int and within 0, size -1)
 # and not previously chosen
-# return hit or miss, store choices in array
+
 
 # computer guess from coordinates in board not already chosen from
 #  random int function
@@ -179,5 +188,6 @@ def main():
     board_divider()
     show_board(cboard)
     game()
+
 
 main()
