@@ -109,11 +109,15 @@ def player_choice():
     row = int(input("Guess your row here: \n"))
     col = int(input("Guess your column here: \n"))
 
-    if (row < 0 or row > (size - 1)) or (col < 0 or col > (size - 1)):
-        raise ValueError(
-            print(f'Coordinates must be between 0 and {size - 1}')
-        )
-    
+    if cboard[row][col] == "." and [row, col] in cboats:
+        print("hit")
+        cboard[row][col] = "o"
+    elif cboard[row][col] == "." and [row, col] not in cboats:
+        print("miss")
+        cboard[row][col] = "x"
+    elif cboard[row][col] == "o" or [row, col] == "x":
+        print("you tried there already")
+
 
 # player input
 # verify player choice is on board(is an int and within 0, size -1)
@@ -139,6 +143,7 @@ def main():
     board_divider()
     show_board(cboard)
     player_choice()
+    show_board(cboard)
 
 
 main()
