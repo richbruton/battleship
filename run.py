@@ -7,6 +7,7 @@ cboats = []
 choices = []
 turn = 0
 
+
 def board_size():
     """
     allow the player to define board size
@@ -142,7 +143,6 @@ def computer_choice():
         computer_choice()
 
 
-
 def game():
     """
     while loop to run the game until the correct
@@ -161,6 +161,7 @@ def game():
         if turn == 9:
             end_game()
 
+
 def end_game():
     print("end game")
 
@@ -168,13 +169,6 @@ def end_game():
 # verify player choice is on board(is an int and within 0, size -1)
 # and not previously chosen
 
-
-# computer guess from coordinates in board not already chosen from
-#  random int function
-# store computers choices in array
-# return hit or miss
-
-# display hits and misses on each board
 
 # round counter
 
