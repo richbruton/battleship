@@ -6,6 +6,7 @@ pboats = []
 cboats = []
 choices = []
 
+
 def board_size():
     """
     allow the player to define board size
@@ -137,6 +138,23 @@ def computer_choice():
     elif pboard[row][col] == "o" or [row, col] == "x":
         print("computer, you tried there already")
 
+
+def game():
+    """
+    while loop to run the game until the correct
+    amount of turns are taken. SHowing each board and
+    the score after each round
+    """
+    turn = 0
+    
+    while turn <= 9:
+        player_choice()
+        computer_choice()
+        show_board(pboard)
+        board_divider()
+        show_board(cboard)
+        turn += 1
+
 # player input
 # verify player choice is on board(is an int and within 0, size -1)
 # and not previously chosen
@@ -160,11 +178,6 @@ def main():
     show_board(pboard)
     board_divider()
     show_board(cboard)
-    player_choice()
-    computer_choice()
-    show_board(pboard)
-    board_divider()
-    show_board(cboard)
-
+    game()
 
 main()
