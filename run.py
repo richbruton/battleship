@@ -4,7 +4,7 @@ pboard = []
 cboard = []
 pboats = []
 cboats = []
-
+choices = []
 
 def board_size():
     """
@@ -119,6 +119,24 @@ def player_choice():
         print("you tried there already")
 
 
+def computer_choice():
+    """
+    Input for computer choice
+    Verify choice is on board
+    Convert . to x if a miss, . to s for a hit
+    """
+    row = randint(0, (size - 1))
+    col = randint(0, (size - 1))
+
+    if pboard[row][col] == "." and [row, col] in pboats:
+        print("hit")
+        pboard[row][col] = "o"
+    elif pboard[row][col] == "." and [row, col] not in pboats:
+        print("miss")
+        pboard[row][col] = "x"
+    elif pboard[row][col] == "o" or [row, col] == "x":
+        print("you tried there already")
+
 # player input
 # verify player choice is on board(is an int and within 0, size -1)
 # and not previously chosen
@@ -143,7 +161,10 @@ def main():
     board_divider()
     show_board(cboard)
     player_choice()
+    computer_choice()
     show_board(cboard)
+    board_divider()
+    show_board(pboard)
 
 
 main()
