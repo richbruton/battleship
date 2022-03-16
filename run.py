@@ -5,6 +5,7 @@ cboard = []
 pboats = []
 cboats = []
 choices = []
+pchoices = []
 turn = 0
 
 
@@ -108,17 +109,53 @@ def player_choice():
     Verify choice is on board
     Convert . to x if a miss, . to s for a hit
     """
-    row = int(input("Guess your row here: \n"))
-    col = int(input("Guess your column here: \n"))
 
-    if cboard[row][col] == "." and [row, col] in cboats:
-        print("player hit")
-        cboard[row][col] = "o"
-    elif cboard[row][col] == "." and [row, col] not in cboats:
-        print("player miss")
-        cboard[row][col] = "x"
-    elif cboard[row][col] == "o" or [row, col] == "x":
-        print("player, you tried there already")
+    while True:
+        row = input("Guess your row here: \n")
+        # validate_player_choice(row)
+        
+        col = input("Guess your column here: \n")
+        # validate_player_choice(col)
+        
+
+        if validate_player_choice(row) and validate_player_choice(col):
+            break
+
+    prow = int(row)
+    pcol = int(col)
+    if [prow, pcol] not in pchoices:
+        if cboard[prow][pcol] == "." and [prow, pcol] in cboats:
+            print("player hit")
+            cboard[prow][pcol] = "o"
+        elif cboard[prow][pcol] == "." and [prow, pcol] not in cboats:
+            print("player miss")
+            cboard[prow][pcol] = "x"
+        elif cboard[prow][pcol] == "o" or [prow, pcol] == "x":
+            print("player, you tried there already")
+    else:
+        player_choice()
+
+
+def validate_player_choice(data):
+    """
+    validate player input is an int, within the range of the board
+    size, and hasnt chosen it already.
+    """
+
+    try:
+        if not data.isdigit():
+            raise ValueError(
+                f"You chose: {data}"
+            )
+        elif int(data) < 0 or int(data) > (size - 1):
+            raise ValueError(
+                f"You chose: {data}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}. Please choose a number from 0 to {size -1}:\n")
+        return False
+
+    return True
 
 
 def computer_choice():
@@ -127,7 +164,7 @@ def computer_choice():
     Verify choice is on board
     Convert . to x if a miss, . to s for a hit
     """
-    
+
     row = randint(0, (size - 1))
     col = randint(0, (size - 1))
     if [row, col] not in choices:
