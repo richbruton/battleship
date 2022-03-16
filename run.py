@@ -155,7 +155,7 @@ def validate_player_choice(data):
                 f"You chose: {data}"
             )
     except ValueError as e:
-        print(f"Invalid data: {e}. Please choose a number from 0 to {size -1}:\n")
+        print(f"Invalid data:{e}. Please choose a number from 0 - {size -1}\n")
         return False
 
     return True
