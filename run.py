@@ -9,7 +9,6 @@ pchoices = []
 turn = 0
 
 
-
 def board_size():
     """
     allow the player to define board size
@@ -72,11 +71,13 @@ def board_divider():
     """
     Board divider to show where one board ends and the other begins
     """
-    pscore = cboard.count('o')
-    cscore = pboard.count('o')
+    pscore = sum(x.count('o') for x in cboard)
+    cscore = sum(x.count('o') for x in pboard)
+
+    print("^^Computer target area")
     print(f"Player score: {pscore}")
-    print(("==")*size)
     print(f"Computer score: {cscore}")
+    print("vv Player target area")
 
 
 def create_p_boats():
@@ -118,14 +119,14 @@ def player_choice():
     while True:
         row = input("Guess your row here: \n")
         col = input("Guess your column here: \n")
-        
+
         if validate_player_choice(row) and validate_player_choice(col):
             break
 
     prow = int(row)
     pcol = int(col)
     if [prow, pcol] not in pchoices:
-        if cboard[prow][pcol] == "." and [prow, pcol] in cboats:            
+        if cboard[prow][pcol] == "." and [prow, pcol] in cboats:
             cboard[prow][pcol] = "o"
             pchoices.append([prow, pcol])
         elif cboard[prow][pcol] == "." and [prow, pcol] not in cboats:
@@ -189,30 +190,33 @@ def game():
     """
     turn = 1
 
-
-    while turn <= 9:
+    while turn < 10:
         print(f'Round: {turn}')
+
         player_choice()
         computer_choice()
         show_board(pboard)
         board_divider()
         show_board(cboard)
         turn += 1
-        if turn == 9:
+        if turn == 10:
             end_game()
+            break
 
 
 def end_game():
-    print("end game")
+    """
+    determine and print result of game
+    """
+    pscore = sum(x.count('o') for x in cboard)
+    cscore = sum(x.count('o') for x in pboard)
 
-
-# verify player choice is on board(is an int and within 0, size -1)
-# and not previously chosen
-
-
-# round counter
-
-# game winner
+    if pscore == cscore:
+        print("A draw")
+    elif pscore > cscore:
+        print("Player wins")
+    elif pscore < cscore:
+        print("Computer wins")
 
 
 def main():
