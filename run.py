@@ -9,6 +9,7 @@ pchoices = []
 turn = 0
 
 
+
 def board_size():
     """
     allow the player to define board size
@@ -71,7 +72,11 @@ def board_divider():
     """
     Board divider to show where one board ends and the other begins
     """
+    pscore = cboard.count('o')
+    cscore = pboard.count('o')
+    print(f"Player score: {pscore}")
     print(("==")*size)
+    print(f"Computer score: {cscore}")
 
 
 def create_p_boats():
@@ -112,26 +117,23 @@ def player_choice():
 
     while True:
         row = input("Guess your row here: \n")
-        # validate_player_choice(row)
-        
         col = input("Guess your column here: \n")
-        # validate_player_choice(col)
         
-
         if validate_player_choice(row) and validate_player_choice(col):
             break
 
     prow = int(row)
     pcol = int(col)
     if [prow, pcol] not in pchoices:
-        if cboard[prow][pcol] == "." and [prow, pcol] in cboats:
-            print("player hit")
+        if cboard[prow][pcol] == "." and [prow, pcol] in cboats:            
             cboard[prow][pcol] = "o"
+            pchoices.append([prow, pcol])
         elif cboard[prow][pcol] == "." and [prow, pcol] not in cboats:
-            print("player miss")
             cboard[prow][pcol] = "x"
-        elif cboard[prow][pcol] == "o" or [prow, pcol] == "x":
-            print("player, you tried there already")
+            pchoices.append([prow, pcol])
+    elif [prow, pcol] in pchoices:
+        print(f"You have already guess {prow},{pcol}. Try again, try better")
+        player_choice()
     else:
         player_choice()
 
@@ -169,11 +171,10 @@ def computer_choice():
     col = randint(0, (size - 1))
     if [row, col] not in choices:
         if pboard[row][col] == "@" and [row, col] in pboats:
-            print("computer hit")
             pboard[row][col] = "o"
             choices.append([row, col])
         elif pboard[row][col] == "." and [row, col] not in pboats:
-            print("computer miss")
+            # print("computer miss")
             pboard[row][col] = "x"
             choices.append([row, col])
     else:
@@ -186,9 +187,11 @@ def game():
     amount of turns are taken. SHowing each board and
     the score after each round
     """
-    turn = 0
+    turn = 1
+
 
     while turn <= 9:
+        print(f'Round: {turn}')
         player_choice()
         computer_choice()
         show_board(pboard)
