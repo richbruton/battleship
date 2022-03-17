@@ -6,7 +6,6 @@ pboats = []
 cboats = []
 choices = []
 pchoices = []
-turn = 0
 
 
 def board_size():
@@ -21,12 +20,36 @@ def board_size():
         print("Use a board size from 4 to 10\n")
 
         size_str = input("Enter your board size here: \n")
-
         if validate_board_size(size_str):
             print(f'You have chosen a {size_str} x {size_str} board')
             break
 
     return size_str
+
+
+def game_rules():
+    """
+    Display the number of boats in the game
+    Show the rules for the game
+    explain the cooridnates
+    """
+    boats = sum(x.count('@') for x in pboard)
+    print(f"There will be {boats} boats on each board")
+    print("You will have 9 attempts to hit as many boats as possible.\n")
+    print("The computer also has 9 attempts.\n")
+    print("If you strike all their boats early in the game,")
+    print("the computer can still strike your boats later in the game.")
+    print("The winner will be the team that has hit the most boats")
+    print("at the end of the game.\n")
+    print("The coordinates for each corner of the board are:\n")
+    print("Top left hand corner: (0,0)")
+    print(f'Top right hand corner: (0,{size -1})')
+    print(f'Bottom left hand corner: ({size -1},0)')
+    print(f'Bottom right hand corner: ({size -1},{size -1})')
+    print("'.' is an unhit square, 'x' is where a missile landed but missed,")
+    print("'o' is a ship that has been hit, '@' is the player's ships.")
+    print("The computer's ships dont turn up on our radar, find them!")
+    print("Good luck!\n")
 
 
 def validate_board_size(data):
@@ -133,7 +156,7 @@ def player_choice():
             cboard[prow][pcol] = "x"
             pchoices.append([prow, pcol])
     elif [prow, pcol] in pchoices:
-        print(f"You have already guess {prow},{pcol}. Try again, try better")
+        print(f"You have already guessed {prow},{pcol}. Try again, try better")
         player_choice()
     else:
         player_choice()
@@ -222,6 +245,7 @@ def end_game():
 def main():
     create_p_boats()
     create_c_boats()
+    game_rules()
     show_board(pboard)
     board_divider()
     show_board(cboard)
