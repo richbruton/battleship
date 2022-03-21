@@ -103,33 +103,22 @@ def board_divider():
     print("vv Player target area")
 
 
-def create_p_boats():
+def create_boats(data, data1):
     """
     create player boats, store in a list and show them on the players board
     """
 
-    while len(pboats) < num_boats:
+    while len(data) < num_boats:
         row = randint(0, (size - 1))
         col = randint(0, (size - 1))
-        pboard[row][col] = "@"
+        if data1 == pboard:
+            data1[row][col] = "@"
+        else:
+            pass
         if [row, col] in pboats:
             continue
         else:
-            pboats.append([row, col])
-
-
-def create_c_boats():
-    """
-    create computer boats and store in a list
-    """
-
-    while len(cboats) < num_boats:
-        row = randint(0, (size - 1))
-        col = randint(0, (size - 1))
-        if [row, col] in cboats:
-            continue
-        else:
-            cboats.append([row, col])
+            data.append([row, col])
 
 
 def player_choice():
@@ -198,7 +187,6 @@ def computer_choice():
             pboard[row][col] = "o"
             choices.append([row, col])
         elif pboard[row][col] == "." and [row, col] not in pboats:
-            # print("computer miss")
             pboard[row][col] = "x"
             choices.append([row, col])
     else:
@@ -243,8 +231,8 @@ def end_game():
 
 
 def main():
-    create_p_boats()
-    create_c_boats()
+    create_boats(pboats, pboard)
+    create_boats(cboats, cboard)
     game_rules()
     show_board(pboard)
     board_divider()
