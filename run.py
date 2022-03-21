@@ -10,7 +10,7 @@ pchoices = []
 
 def board_size():
     """
-    allow the player to define board size
+    Allow the player to define board size
     This will also eventually decide the number of boats
     Validation to be add for max and min board size
     """
@@ -31,7 +31,7 @@ def game_rules():
     """
     Display the number of boats in the game
     Show the rules for the game
-    explain the cooridnates
+    Explain the cooridnates
     """
     boats = sum(x.count('@') for x in pboard)
     print(f"There will be {boats} boats on each board")
@@ -55,7 +55,7 @@ def game_rules():
 def validate_board_size(data):
     """
     Validate board size to be between 4 and 10(inclusive)
-    make sure board size can be converted to integer
+    Make sure board size can be converted to integer
     """
 
     try:
@@ -105,7 +105,7 @@ def board_divider():
 
 def create_boats(data, data1):
     """
-    create player boats, store in a list and show them on the players board
+    Create boats, store in a list and show them on the board
     """
 
     while len(data) < num_boats:
@@ -153,7 +153,7 @@ def player_choice():
 
 def validate_player_choice(data):
     """
-    validate player input is an int, within the range of the board
+    Validate player input is an int, within the range of the board
     size, and hasnt chosen it already.
     """
 
@@ -195,7 +195,7 @@ def computer_choice():
 
 def game():
     """
-    while loop to run the game until the correct
+    While loop to run the game until the correct
     amount of turns are taken. SHowing each board and
     the score after each round
     """
@@ -217,7 +217,7 @@ def game():
 
 def end_game():
     """
-    determine and print result of game
+    Determine and print result of game
     """
     pscore = sum(x.count('o') for x in cboard)
     cscore = sum(x.count('o') for x in pboard)
@@ -231,6 +231,9 @@ def end_game():
 
 
 def main():
+    """
+    Function to call all other functions
+    """
     create_boats(pboats, pboard)
     create_boats(cboats, cboard)
     game_rules()
