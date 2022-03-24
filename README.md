@@ -142,10 +142,17 @@ Testing occurred on all the different board sizes to make sure that the correct 
         pscore = sum(x.count('o') for x in cboard)
         cscore = sum(x.count('o') for x in pboard)
 
-
 ## Validator
 
+The python code was passed through the PEP8 validator and was cleared with no issues.
+
 ![PEP8 validator](/assets/images/pep8.png)
+
+## Future features
+
+- The game currently only lasts nine rounds. This can be a bit too many for a 4x4 board and not enough for the larger boards. A future feature will be to either make the number of turns to be a function of the board size or to allow the player decide at the start how many turns the game should last.
+
+- As the board is based on list indexes, the first row or column is 0. This is not intuitive for players who might not be familair with list indices. A future feature would be to utilise the 0 index row and column to display the grid coordinates for the board.
 
 # Deployment
 
