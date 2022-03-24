@@ -102,9 +102,46 @@ The scoreboard is not repeated here as it is visible after each round.
 
 ## Technology Used
 
+- Python - The language the game in written in.
+- Gitpod - IDE
+- Github - Version control of the program
+- Heroku - platform the program is deployed on
+- Lucid - for flow chart visuals
+
 # Testing
 
+Testing for this app was done on an ongoing basis. At each stage of development print statements were used to make sure every function was going to return the desired outcome. Before each validation function was written care was taken to test within the parameters to see if the game would function as intended. After each validation function was written, incorrect inputs were made intentionally to make sure the correct error message was returned. When each functino was working in a satisfactory way, the next function was started and the testing process would begin again, to make sure the new functino works well and doesn't intefer with any previous element of the program.
+
+Testing occurred on all the different board sizes to make sure that the correct amount of boats appeared on the board that was supposed to show boards. Boat lists were printed to make sure there were no repeated coordinates.
+
 ## Bugs
+
+- While validating the size of the board, the validate_board_size function operated as expected if a number outside of the desired range was selected, but it threw an error and stopped the script if a non number character was selected. This was overcome by adding the following if statement to the try/except function:
+
+        if not data.isdigit():
+            raise ValueError(
+                f"You chose: {data}"
+            )
+
+- While creating the player boats, it was decided that each board would have boats in 25% of tha vailable places, rounded down to the nearest full number. On a 4x4 board this would mean 4 boats, on a 5x5 board there would be 6 boats. Creating the player boats was undertaken first as they would be visible and errors easier to spot. Initial testing on the smaller board seemed fine, but as the board size increased there was often 1 or 2 boats less than expected. A list of the players boats were created and the boats coordinates were added to the list as a tuple each time. In turned out that the randint() function didn't know you couldn't have 2 boats in one place. This issue was over come with a while loop that ran as long as the length of the list of boats was less than the number of boats for that board size. If the random coordinates were already in the boats list, the while loop would continue, if they weren't already in the list they would be added to the list. After the create_p_boats and create_c_boats functions were consildated into create_boats, the solution was as follows:
+
+        while len(data) < num_boats:
+            row = randint(0, (size - 1))
+            col = randint(0, (size - 1))
+            if data1 == pboard:
+                data1[row][col] = "@"
+            else:
+                pass
+            if [row, col] in pboats:
+                continue
+            else:
+                data.append([row, col])
+
+- Score not updating. Initially pscore and cscore were to be stored globally but three was issue getting them to update with `pscore +=1` and `cscore += 1`, to overcome this the score would be calculated after each round in the board_divider function where the scores were to be displayed. This was to be done by calculating the sum of hits (character "o") in each list of the list for each board. 
+
+        pscore = sum(x.count('o') for x in cboard)
+        cscore = sum(x.count('o') for x in pboard)
+
 
 ## Validator
 
