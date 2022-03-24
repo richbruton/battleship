@@ -158,3 +158,5 @@ The python code was passed through the PEP8 validator and was cleared with no is
 
 # Credit
 
+- Validation function was adapted from the Love Sandwiches validation function.
+- The isdigit() method was learnt from [W3Schools](https://www.w3schools.com/python/ref_string_isdigit.asp)
