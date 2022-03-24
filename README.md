@@ -156,7 +156,32 @@ The python code was passed through the PEP8 validator and was cleared with no is
 
 # Deployment
 
+The code was deployed to Heroku using the follwoing steps.
+
+1. Sign in to Heroku
+
+2. Select New and Create New App
+
+3. App Name must be unique so this app was battleship-rb. For region select Europe and then Create App.
+
+4. In the newly created app dashboard navigate to settings. 
+
+5. Navigate down to config vars and click on Reveal Config Vars. In this app there is only one to be applied. Set the KEY to PORT and set the value to 8000.
+
+6. Below Config Vars there is a Buildpacks section. CLick on Add buildpack. The first buildpack to be added is Python. The second buildpack to be added is node.js. The order of adding the buildpacks is important.
+
+7. At the top of the page navigate to the Deploy tab.
+
+8. The deployment method for this app will be GitHub, click on GitHub and sign in to connect the accounts, if they havent already been connected.
+
+9. Search for the repo in Github by typing battleship in the search and clicking connect. 
+
+10. There is an option to either deploy automatically or to deploy manually. For this app it was decided to use manual deploy. Ensure that the drop down menu says main and click Deploy Branch. 
+
+11. After the build process is complete a success message will appear with a link to your live site.
+
 # Credit
 
 - Validation function was adapted from the Love Sandwiches validation function.
+
 - The isdigit() method was learnt from [W3Schools](https://www.w3schools.com/python/ref_string_isdigit.asp)
