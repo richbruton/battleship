@@ -113,8 +113,6 @@ def create_boats(data, data1):
         col = randint(0, (size - 1))
         if data1 == pboard:
             data1[row][col] = "@"
-        else:
-            pass
         if [row, col] in pboats:
             continue
         else:
@@ -196,7 +194,7 @@ def computer_choice():
 def game():
     """
     While loop to run the game until the correct
-    amount of turns are taken. SHowing each board and
+    amount of turns are taken. Showing each board and
     the score after each round
     """
     turn = 1
