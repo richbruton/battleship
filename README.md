@@ -108,9 +108,9 @@ The scoreboard is not repeated here as it is visible after each round.
 - Heroku - platform the program is deployed on
 - Lucid - for flow chart visuals
 
-# Testing
+# Manual Testing
 
-Testing for this app was done on an ongoing basis. At each stage of development print statements were used to make sure every function was going to return the desired outcome. Before each validation function was written care was taken to test within the parameters to see if the game would function as intended. After each validation function was written, incorrect inputs were made intentionally to make sure the correct error message was returned. When each functino was working in a satisfactory way, the next function was started and the testing process would begin again, to make sure the new functino works well and doesn't intefer with any previous element of the program.
+Testing for this app was done on an ongoing basis. At each stage of development print statements were used to make sure every function was going to return the desired outcome. Before each validation function was written care was taken to test within the parameters to see if the game would function as intended. After each validation function was written, incorrect inputs were made intentionally to make sure the correct error message was returned. When each functino was working in a satisfactory way, the next function was started and the testing process would begin again, to make sure the new function works well and doesn't intefer with any previous element of the program.
 
 Testing occurred on all the different board sizes to make sure that the correct amount of boats appeared on the board that was supposed to show boards. Boat lists were printed to make sure there were no repeated coordinates.
 
@@ -153,6 +153,8 @@ The python code was passed through the PEP8 validator and was cleared with no is
 - The game currently only lasts nine rounds. This can be a bit too many for a 4x4 board and not enough for the larger boards. A future feature will be to either make the number of turns to be a function of the board size or to allow the player decide at the start how many turns the game should last.
 
 - As the board is based on list indexes, the first row or column is 0. This is not intuitive for players who might not be familair with list indices. A future feature would be to utilise the 0 index row and column to display the grid coordinates for the board.
+
+- The player_choice() and computer_choice() functions could be split up in to 2 or 3 simpler functions each. This will allow for the game to be easier adapted to implement different new features.
 
 # Deployment
 
